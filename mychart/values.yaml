@@ -37,7 +37,7 @@ wezvabackendapp:
   topologySpreadConstraints: []
   wezvabackendapp:
     image:
-      repository: 001647536300.dkr.ecr.ap-south-1.amazonaws.com/wezvatechbackend
+      repository: 001647536300.dkr.ecr.ap-south-1.amazonaws.com/payment
       tag: fb1
     imagePullPolicy: IfNotPresent
     resources:
