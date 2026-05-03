@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: wezvatech-capstoneproject
+  namespace: argocd # Must be in the same namespace as Argo CD
+spec:
+  generators:
+  - git:
+      repoURL: https://gitlab.com/wezvaprojects/ninjas/jobready1.0/deployment/springboot.git
+      revision: HEAD
+      directories:
+      - path: envs/*
+  template:
+    metadata:
+      name: '{{path.basename}}' 
+    spec:
+      project: default
+      source:
+        repoURL: https://gitlab.com/wezvaprojects/ninjas/jobready1.0/deployment/springboot.git
+        targetRevision: main
+        path: mychart
+        helm:
+          valueFiles:
+           - '../envs/{{path.basename}}/values.yaml'
+      destination:
+        server: https://kubernetes.default.svc # Your target cluster API server URL
+        namespace: '{{path.basename}}' # Target namespace for deployment
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true 
+
