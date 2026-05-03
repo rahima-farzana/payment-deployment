@@ -14,7 +14,7 @@ on:
       IMAGE:
         description: "Image Tag"
         required: true
-        default: "fb28"
+        default: "fb19"
       TEST:
         description: "Environment"
         required: true
