@@ -1,9 +1,9 @@
-wezvabackendapp:
-  wezvabackendapp:
+wezvapaymentapp:
+  wezvapaymentapp:
     image:
-      image: 081654307023.dkr.ecr.ap-south-1.amazonaws.com/payment
+      image: 081654307023.dkr.ecr.ap-south-1.amazonaws.com/wezvatechpayment
       tag: fb19
-backendSvc:
+paymentSvc:
   ports:
   - nodePort: 30000
     port: 8080

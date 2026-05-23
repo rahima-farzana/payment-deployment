@@ -1,6 +1,12 @@
 name: CD Pipeline
 
 on:
+  push:
+    paths:
+      - 'envs/**'
+    branches:
+      - main
+
   workflow_dispatch:
     inputs:
       ECRURL:
@@ -14,7 +20,7 @@ on:
       IMAGE:
         description: "Image Tag"
         required: true
-        default: "fb19"
+        default: "rel6"
       TEST:
         description: "Environment"
         required: true
