@@ -2,7 +2,7 @@ wezvabackendapp:
   wezvabackendapp:
     image:
       image: 081654307023.dkr.ecr.ap-south-1.amazonaws.compayment
-      tag: rel4
+      tag: rel24
 backendSvc:
   ports:
   - nodePort: 30000
