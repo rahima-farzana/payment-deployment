@@ -1,16 +1,16 @@
-name: k8s Pipeline
+name: DevSecOps Pipeline
 
 on:
   push:
     branches:
-      - main
+      - dev
     paths:
       - 'mychart/**'
 
   workflow_dispatch:
     
 jobs:
-  deploy:
+  devsecops:
     runs-on: ubuntu-latest
 
     steps:

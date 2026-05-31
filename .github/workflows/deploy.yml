@@ -1,12 +1,6 @@
 name: CD Pipeline
 
 on:
-  push:
-    paths:
-      - 'envs/**'
-    branches:
-      - main
-
   workflow_dispatch:
     inputs:
       ECRURL:
@@ -34,6 +28,7 @@ on:
 
 jobs:
   deploy:
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
 
     steps:
