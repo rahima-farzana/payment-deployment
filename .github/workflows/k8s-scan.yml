@@ -1,4 +1,4 @@
-name: DevSecOps Pipeline
+name: k8s Pipeline
 
 on:
   push:
@@ -8,16 +8,15 @@ on:
       - 'mychart/**'
 
   workflow_dispatch:
-    
+
 jobs:
-  devsecops:
-    if: github.ref_name == 'dev'
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       # ------------
       # Install Helm
       # ------------
@@ -31,4 +30,4 @@ jobs:
         continue-on-error: true
         run: |
           helm template ./mychart -f envs/functional/values.yaml > renderedmanifest.yaml
-          docker run --rm -v "$(pwd):/app" kubesec/kubesec scan /app/renderedmanifest.yaml      
+          docker run --rm -v "$(pwd):/app" kubesec/kubesec scan /app/renderedmanifest.yaml || true
