@@ -66,8 +66,7 @@ spec:
         env:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
-        image: {{ .Values.wezvapaymentapp.initMydb.image.repository }}:{{ .Values.wezvapaymentapp.initMydb.image.tag
-          | default .Chart.AppVersion }}
+        image: {{ .Values.wezvapaymentapp.initMydb.image.repository }}:{{ .Values.wezvapaymentapp.initMydb.image.tag | default .Chart.AppVersion }}
         name: init-mydb
         resources: {}
       nodeSelector: {{- toYaml .Values.wezvapaymentapp.nodeSelector | nindent 8 }}
