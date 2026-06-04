@@ -66,7 +66,7 @@ spec:
         env:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
-        image: {{ .Values.wezvapaymentapp.initMydb.image.repository }}:{{ .Values.wezvapaymentapp.initMydb.image.tag | default .Chart.AppVersion }}
+        image: busybox:latest
         name: init-mydb
         resources: {}
       nodeSelector: {{- toYaml .Values.wezvapaymentapp.nodeSelector | nindent 8 }}
@@ -81,17 +81,3 @@ spec:
             path: application.properties
           name: {{ include "mychart.fullname" . }}-wezvapaymentapp
         name: testconfigmap
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "mychart.fullname" . }}-payment-svc
-  labels:
-  {{- include "mychart.labels" . | nindent 4 }}
-spec:
-  type: {{ .Values.paymentSvc.type }}
-  selector:
-    app.kubernetes.io/name: wezvapaymentapp
-    {{- include "mychart.selectorLabels" . | nindent 4 }}
-  ports:
-  {{- .Values.paymentSvc.ports | toYaml | nindent 2 }}
