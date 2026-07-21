@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/wezva-fintech/payment-deployment.git
+      repoURL: https://github.com/rahima-farzana/payment-deployment.git
       revision: HEAD
       directories:
       - path: envs/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/wezva-fintech/payment-deployment.git
+        repoURL: https://github.com/rahima-farzana/payment-deployment.git
         targetRevision: main
         path: mychart
         helm:
